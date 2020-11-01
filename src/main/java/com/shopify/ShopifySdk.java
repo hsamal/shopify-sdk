@@ -166,7 +166,7 @@ public class ShopifySdk {
 	private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
 	private static final int LOCKED_STATUS_CODE = 423;
 
-	private static final String SHOP_RETRIEVED_MESSAGE = "Starting to make calls for Shopify store with ID of {} and name of {}";
+	private static final String SHOP_RETRIEVED_MESSAGE = "Starting to make calls for Shopify store {}";
 	private static final String COULD_NOT_BE_SAVED_SHOPIFY_ERROR_MESSAGE = "could not successfully be saved";
 	private static final String RETRY_FAILED_MESSAGE = "Request retry has failed.";
 	private static final String DEPRECATED_SHOPIFY_CALL_ERROR_MESSAGE = "Shopify call is deprecated. Please take note of the X-Shopify-API-Deprecated-Reason and correct the call.\nRequest Location of {}\nResponse Status Code of {}\nResponse Headers of:\n{}";
@@ -1040,8 +1040,7 @@ public class ShopifySdk {
 			if (this.accessToken == null) {
 				this.accessToken = generateToken();
 			}
-			final Shop shop = this.getShop().getShop();
-			LOGGER.info(SHOP_RETRIEVED_MESSAGE, shop.getId(), shop.getName());
+			LOGGER.info(SHOP_RETRIEVED_MESSAGE, shopSubdomain);
 		}
 		return webTarget;
 	}
